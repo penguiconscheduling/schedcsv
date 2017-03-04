@@ -4,12 +4,17 @@
 #wget --output-documuent sched.csv "https://docs.google.com/spreadsheet/ccc?key=0AiCkD773xnvKdHZ5NU9OcThZNXVDZDBONXdVQjJ5T3c&output=csv"
 
 #rm ./sched.csv
-echo get the schedule from google drive
+#echo get the schedule from google drive
 # wget --output-document sched.csv "https://docs.google.com/spreadsheet/ccc?key=0AsysQw--cSRTdEd4b005YmhGZmVTNUtzZXlCR0Z0WlE&output=csv"
 
-
-wget --output-document sched.csv https://docs.google.com/spreadsheets/d/1WFOl4XmKqsfvPQz46d2gRzFZEYrqIBj9Urmgsj0sNq4/pub?output=csv &
+echo get schedule from sched.org
+wget --output-document sched.csv https://penguicon2017.sched.com/api/session/export?api_key=b7c60a4b1baa2e8f178c1358c3ec1243&format=csv&strip_html=Y&custom_data=Y &
 wait %1
+
+
+# 2016
+#wget --output-document sched.csv https://docs.google.com/spreadsheets/d/1WFOl4XmKqsfvPQz46d2gRzFZEYrqIBj9Urmgsj0sNq4/pub?output=csv &
+#wait %1
 
 #schedule for 2015
 #wget --output-document sched.csv https://docs.google.com/spreadsheets/d/1WFOl4XmKqsfvPQz46d2gRzFZEYrqIBj9Urmgsj0sNq4/export?format=csv&id=1WFOl4XmKqsfvPQz46d2gRzFZEYrqIBj9Urmgsj0sNq4 &
