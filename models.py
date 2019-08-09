@@ -5,8 +5,7 @@ http://valchemist-inn.rhcloud.com/
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, Date, String, Table, Text, Float, ForeignKey
-from sqlalchemy.orm import sessionmaker, relationship, backref
+from sqlalchemy import Column, Date, ForeignKey, Integer, String, Text
 
 Base = declarative_base()
 
@@ -42,10 +41,10 @@ class speaker(Base):
 
 class event(Base):
     __tablename__ = "events"
-    location_id = Column(Integer, ForeignKey(location.id)) # one or more
-    track_id = Column(Integer, ForeignKey(track.id)) # one or more
-    speaker_id = Column(Integer, ForeignKey(speaker.id)) # one or more
-    start = Column(Date) # later when checking for conflicts check in 10 minute intervals
+    location_id = Column(Integer, ForeignKey(location.id))  # one or more
+    track_id = Column(Integer, ForeignKey(track.id))  # one or more
+    speaker_id = Column(Integer, ForeignKey(speaker.id))  # one or more
+    start = Column(Date)  # later when checking for conflicts check in 10 minute intervals
     end = Column(Date)
     title = Column(Text)
     description = Column(Text)
@@ -73,9 +72,6 @@ class spreadsheetdb(Base):
     all_day_event = Column(String)
     private = Column(String)
 
-
-
-
     """ 
 'End Date': '4/26/2015'
 'All Day Event': 'TRUE'
@@ -96,11 +92,13 @@ class spreadsheetdb(Base):
 #    def __repr__(self):
 #        return "event()"
 
-#association tables
-    #event_speakers = 
+# association tables
+    # event_speakers =
+
 
 if __name__ == '__main__':
     print('running sqlalchemy ' + sqlalchemy.__version__)
-    engine = create_engine(r'sqlite:////home/jhice/projects/schedcsv/schedule.db', echo=True) #connect to database
-    Base.metadata.create_all(engine) #Lets create the actual sqlite database and schema!
+    engine = create_engine(r'sqlite:////home/jhice/projects/schedcsv/schedule.db',
+                           echo=True)  # connect to database
+    Base.metadata.create_all(engine)  # Lets create the actual sqlite database and schema!
     print('database created: schedule.db')
